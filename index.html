@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connect 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Connect 4</h1>
+  <div class="connect4">
+    <div class="board">
+      <!-- Repeat this row structure for each row -->
+      <!-- Add more rows with cells representing columns -->
+      <div class="row">
+        <div class="cell" data-column="1">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="2">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="3">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="4">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="5">
+          <div class="token"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell" data-column="1">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="2">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="3">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="4">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="5">
+          <div class="token"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell" data-column="1">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="2">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="3">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="4">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="5">
+          <div class="token"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell" data-column="1">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="2">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="3">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="4">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="5">
+          <div class="token"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cell" data-column="1">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="2">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="3">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="4">
+          <div class="token"></div>
+        </div>
+        <div class="cell" data-column="5">
+          <div class="token"></div>
+        </div>
+      </div>
+      <div class = placeToken>
+
+      </div>
+    </div>
+  </div>
+    <!-- Input for column selection -->
+    <div class="user-input">
+        <label for="columnInput">Select Column: </label>
+        <input type="number" id="columnInput" min="1" max="5">
+        <button onclick="placeToken()">Place Token</button>
+      </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
