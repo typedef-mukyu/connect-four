@@ -18,6 +18,7 @@ h1 {
     position: relative;
     bottom: 50px;
 }
+
 .connect4 {
     display: flex;
     justify-content: center;
