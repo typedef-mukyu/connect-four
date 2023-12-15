@@ -1,7 +1,10 @@
+<script src="/game.js"></script>
 <div class="connect4">
-    <div class="board">
-        {{!-- {{{board}}} --}}
-        
+    <div class="board" data-player-id="{{pid}}">
+        {{{board}}}
+    </div>
+    <div class = "buttons">
+        {{{buttons}}}
     </div>
 </div>
 {{> moveControls}}

@@ -1,6 +1,3 @@
-function placeToken(){
-
-}
 function newGame(){
     var xhr = new XMLHttpRequest()
     xhr.onreadystatechange = function(){
