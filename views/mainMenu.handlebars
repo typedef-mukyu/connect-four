@@ -1,8 +1,8 @@
 <script src="/index.js"></script>
-
-<button type="button" id="new-game-button"><i class="fas fa-plus"></i>New Game</button>
-<button type="button" id="join-room-button"><i class="fas fa-plus"></i>Join a Room</button>
-
+<div class="menu-buttons">
+    <button type="button" id="new-game-button">New Game</button>
+    <button type="button" id="join-room-button">Join Game</button>
+</div>
 <div id="modal-backdrop" class="hidden"></div>
 <div id="join-game-modal" class="hidden">
     <div class="modal-dialog">
@@ -12,9 +12,9 @@
         </div>
     
         <div class="modal-body">
-            <div class="join-game-number">
-                <label for="text-input">Enter Join Code</label>
-                <input type="text" id="text-input"></input>
+            <div class="join-game-field">
+                <label for="game-id">Enter Game ID</label>
+                <input type="number" id="game-id"></input>
             </div>
         </div>
         <div class="modal-footer">

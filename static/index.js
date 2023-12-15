@@ -15,7 +15,7 @@ function newGame(){
     xhr.send();
 }
 function joinGame(){
-    var gameID = Number(document.querySelector(".join-game-number #text-input").value);
+    var gameID = Number(document.querySelector("#game-id").value);
     var xhr = new XMLHttpRequest();
     var gameUrl = "/games/" + String(gameID) + "/player/1/play";
     xhr.onreadystatechange = function(){
@@ -24,7 +24,7 @@ function joinGame(){
                 window.location.href = gameUrl;
             }
             else{
-                alert("Join code invalid.");
+                alert("Game ID invalid.");
             }
         }
         
@@ -39,9 +39,7 @@ function showJoinGameModal(){
     for(var i = 0; i < cancelButtons.length; i++){
         cancelButtons[i].addEventListener("click", hideJoinGameModal);
     }
-    acceptButton.addEventListener("click", joinGame);
-
-    
+    acceptButton.addEventListener("click", joinGame);    
 }
 function hideJoinGameModal(){
     for(var i = 0; i < cancelButtons.length; i++){
@@ -52,9 +50,6 @@ function hideJoinGameModal(){
     joinGameModal.classList.add("hidden");
 }
 window.addEventListener('DOMContentLoaded', function () {
-    /*
-     * Remember all of the initial post elements initially displayed in the page.
-     */
     newGameButton = document.querySelector("#new-game-button");
     newGameButton.addEventListener("click", newGame);
     joinGameButton = document.querySelector("#join-room-button");

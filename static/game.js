@@ -25,11 +25,16 @@ function getState(force = 0){
     xhr.responseType = "json";
     xhr.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            console.log(200);
             currentState = xhr.response;
             updateBoard();
-            if(currentState.currentTurn !== playerID) waitForMove();
-            else if (!checkWin()) textField.innerText = "It is your turn.";
+            if(!checkWin()){
+                if(currentState.currentTurn !== playerID) waitForMove();
+                else textField.innerText = "It is your turn.";
+            }
+            if(force){
+                document.querySelector("#join-code-field").innerText = "Game ID: " + String(currentState.id);
+                document.querySelector("h1").classList.add("player" + String(playerID + 1));
+            }
         }
     }
     xhr.open("GET", "state?force=" + String(force), true);
@@ -53,10 +58,9 @@ function dropChip(x){
     xhr.send();
 }
 function checkWin(){
-    if(currentState.winner !== null){
-        if(currentState.winner === playerID){
-            textField.innerText = "You win!";
-        }
+    if(currentState.winner !== null && currentState.winner !== undefined){
+        if(currentState.winner === playerID) textField.innerText = "You win!";
+        else if (currentState.winner === -1) textField.innerText = "It's a draw."
         else textField.innerText = "You lose.";
         return 1;
     }
@@ -82,8 +86,6 @@ window.addEventListener('DOMContentLoaded', function () {
             dropChip(Number(this.dataset.col));
         })
     }
-    textField = document.querySelector(".connect4 p");
+    textField = document.querySelector("#game-status-field");
     getState(1);
-    
-        
 })

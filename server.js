@@ -13,11 +13,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set('views', './views');
-process.on("exit", () =>{
-    console.log("Saving open games...")
-    cleanUpGames();
-    fs.writeFileSync("gameStates.json", JSON.stringify(gameStates));
-})
+
 function autoSaveLoop(){
     cleanUpGames();
     fs.writeFile("gameStates.json", JSON.stringify(gameStates), () => {
@@ -73,9 +69,6 @@ function generateButtons(){
         outputHtml += "<button type=\"button\""
         +" class=\"drop-button\" data-col=\""
         + String(i) + "\">" + String(i + 1) + "</button>";
-        // outputHtml += "<button type=\"button\" id=\"Column-"+ String(i + 1) 
-        // +"\"class=\"drop-button\" data-col=\""
-        // + String(i) + "\">" + String(i + 1) + "</button>";
     }
     return outputHtml;
 }
@@ -150,11 +143,22 @@ function checkWinVert(state){
         }
     }
 }
+function checkDraw(state){
+    if(state.winner === null){
+        for(var x = 0; x < 7; x++){
+            for(var y = 0; y < 6; y++){
+                if(state.grid[x][y] === null) return;
+            }
+        }
+        state.winner = -1;
+    }
+}
 function checkWin(state){
     checkWinHoriz(state);
     checkWinVert(state);
     checkWinDiag(state, 1);
-    checkWinDiag(state, 0)
+    checkWinDiag(state, 0);
+    checkDraw(state);
 }
 function checkWinDiag(state, direction){
     var upDiagonals = [[0, 2], [0, 1], [0, 0], [1, 0], [2, 0], [3, 0]]
@@ -247,16 +251,13 @@ app.post("/games/:n/player/:p/move/:x", function(req, res, next){
 })
 
 app.get("/games/:n/player/:p/state", function(req, res, next){
-    console.log("state")
     var n = Number(req.params.n);
     var p = Number(req.params.p);
     if(n === NaN || gameStates[n] === undefined) next();
     else if(p < 0 || p > 1){
-        res.status(400).end();
-        
+        res.status(400).end();     
     }
     else{
-        console.log(!req.query.force && gameStates[n].currentTurn !== p)
         if(!req.query.force && gameStates[n].currentTurn !== p){
             res.status(304).end();
         }
@@ -273,5 +274,5 @@ app.get('*', function (req, res) {
 
 app.listen(port, function () {
     console.log("== Server is listening on port", port);
-
+    autoSaveLoop();
 })

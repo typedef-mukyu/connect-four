@@ -1,36 +1,49 @@
-body{
+html{
   font-family: 'Segoe UI', "Roboto", sans-serif;
+}
+body{
+  
   margin: 0;
 }
-
-h1 {
-  text-decoration: none;
-  font-size: 48pt;
-  color: rgb(235, 235, 235);
-  position: relative;
+header{
+  display: flex;
+  /* width: 100%; */
+  align-items: center;
+  justify-content: center;
   margin: 0px;
   border: 1px solid black;
   border-color:#000;
   background-color: #000000;
 }
-
-
-/*.placeToken {
+header h1{
   text-decoration: none;
-  font-family: 'Arial';
-  font-size: 24pt;
-  color: black;
+  font-size: 48pt;
+  color: rgb(235, 235, 235);
   position: relative;
-  right: 250px;
-  bottom: 0px;
-}*/
-
-.connect4 {
+  margin: 8px;
+}
+header h1.player1 a{
+  color: #df0000;
+}
+header h1.player2 a{
+  color: #dfcf00;
+}
+header h1 a{
+  color: inherit;
+  text-decoration: none;
+}
+h2{
+  font-size: 36px;
+}
+h3{
+  font-size: 28px;
+}
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  margin: 20px;
 }
 
 .board {
@@ -41,6 +54,7 @@ h1 {
   border: 2px solid #000;
   background-color: #6495ed;
   padding: 5px;
+  position: relative;
 }
 
 .cell {
@@ -60,193 +74,71 @@ h1 {
   margin: 5px;
 }
 
-.player1 {
-  background-color: red;
+.token.player1 {
+  background-color: #df0000;
 }
 
-.player2 {
-  background-color: yellow;
+.token.player2 {
+  background-color: #dfcf00;
 }
 
-.buttons {
+.menu-buttons {
+/* width: 600px; */
 display: flex;
-justify-content: space-around; /* or space-between */
-gap: -200px; 
-}
+justify-content: space-around;
 
-#new-game-button {
-margin: 25px;
-width: 250px;
-height: 100px;
-font-size: 24pt;
-color: white;
-background-color: orange;
-border-radius: 25%;
 }
-
-#join-room-button {
-  margin: 25px; 
+.menu-buttons > button{
+  margin: 25px;
   width: 250px;
   height: 100px;
   font-size: 24pt;
+  border-radius: 10px;
   color: white;
-  background-color: orange;
-  border-radius: 25%;
 }
 
-.drop-button{
+.menu-buttons > button:hover,
+.menu-buttons > button:focus{
+  scale: 110%;
+}
+
+#new-game-button {
+  background-color: #df0000;
+}
+#new-game-button:hover {
+  background-color: #ff4f4f;
+}
+
+#join-room-button {
+  background-color: #dfcf00;
+}
+#join-room-button:hover {
+  background-color: #ffe74f;
+}
+
+button{
+  font-family: "Segoe UI", "Roboto", sans-serif;
   margin: 5px;
+  color: white;
+  background-color: #000000;
+  border: 1px solid #7f7f7f;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: 300;
+  cursor: pointer;
+}
+button:hover{
+  background-color: #9f9f9f;
+  color: #000000;
+
+}
+.drop-button{
+  margin-left: 10px;
   width: 50px;
   height: 50px;
   font-size: 24pt;
-  color: white;
-  background-color: gray;
   border-radius: 25%;
 }
-
-.drop-button:hover{
-  scale: 120%;
-  cursor: pointer;
-  background-color: orange;
-}
-
-#Column-1 {
-position: fixed;
-margin: 5px;
-bottom: 185px;
-left: 705px; 
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-2 {
-position: fixed;
-margin: 5px;
-bottom: 185px;
-left: 770px; 
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-3 {
-position: fixed;
-margin: 5px;
-bottom: 185px;
-left: 835px; 
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-4 {
-position: fixed;
-margin: 5px;
-bottom: 185px;
-left: 900px; 
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-5 {
-position: fixed;
-margin: 5px;
-bottom: 185px; 
-left: 965px;
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-6 {
-position: fixed;
-margin: 5px;
-bottom: 185px; 
-left: 1030px;
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-7 {
-position: fixed;
-margin: 5px;
-bottom: 185px;
-left: 1095px; 
-width: 50px;
-height: 50px;
-font-size: 24pt;
-color: white;
-background-color: gray;
-border-radius: 25%;
-}
-
-#Column-1:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-2:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-3:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-4:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-5:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-6:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-#Column-7:hover {
-scale: 120%;
-cursor: pointer;
-background-color: orange;
-}
-
-
-/*
-Modal Stuff
-*/
 
 #modal-backdrop {
   position: fixed;
@@ -267,6 +159,22 @@ Modal Stuff
   z-index: 1010;
   overflow: scroll;
 }
+.join-game-field{
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+.join-game-field label{
+  font-weight: 500;
+  flex: 1 100px;
+  margin-right: 15px;
+}
+.join-game-field input{
+  flex: 5 160px;
+  padding: 10px;
+  border: 1px solid #7f7f7f;
+}
 
 .hidden {
   display: none;
@@ -276,7 +184,7 @@ Modal Stuff
   width: auto;
   max-width: 600px;
   min-width: 350px;
-  min-height: 300px;
+  min-height: 200px;
   margin: 40px auto;
   background-color: #fff;
   border-radius: 15px;
@@ -289,7 +197,6 @@ padding: 10px 20px;
 
 .modal-header h3 {
 margin: 0;
-font-size: 28px;
 }
 
 #modal-close {
@@ -306,7 +213,9 @@ cursor: pointer;
 .modal-body {
 padding: 20px;
 }
-.join-game-number{
+
+
+.game-text-field{
   display: flex;
   align-items: center;
   font-size: 20px;
@@ -322,26 +231,10 @@ padding: 10px 10px 20px 10px;
 .hidden {
 display: none;
 }
-#modal-cancel,
-#modal-accept {
-margin-right: 20px;
-}
 
-#modal-cancel {
-color: #333;
-background-color: #fff;
-}
-
-#modal-cancel:hover {
-background-color: #eee;
-}
-
-#join-room-button:hover,
-#join-room-button:focus {
-scale: 110%;
-}
-
-#new-game-button:hover,
-#new-game-button:focus {
-scale: 110%;
+.action-button {
+  margin-left: 16px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;  
 }
