@@ -10,14 +10,15 @@ h1 {
     background-color: #000000;
 }
 
-.userInput {
+/*.placeToken {
     text-decoration: none;
     font-family: 'Arial';
     font-size: 24pt;
     color: black;
     position: relative;
-    bottom: 50px;
-}
+    right: 250px;
+    bottom: 0px;
+}*/
 
 .connect4 {
     display: flex;
@@ -28,8 +29,8 @@ h1 {
   
   .board {
     display: grid;
-    grid-template-columns: repeat(5, 60px);
-    grid-template-rows: repeat(5, 60px); /* Ensure the grid has 5 rows */
+    grid-template-columns: repeat(7, 60px);
+    grid-template-rows: repeat(6, 60px); /* Ensure the grid has 7 rows */
     grid-gap: 5px;
     border: 2px solid #000;
     background-color: #6495ed;
@@ -60,3 +61,254 @@ h1 {
   .player2 {
     background-color: yellow;
   }
+
+#New-Game-Button {
+  position: fixed;
+  margin: 5px;
+  top: 85px;
+  left: 500px; 
+  width: 250px;
+  height: 100px;
+  font-size: 24pt;
+  color: white;
+  background-color: orange;
+  border-radius: 25%;
+}
+
+#Join-Room-Button {
+    position: fixed;
+    margin: 5px; 
+    width: 250px;
+    height: 100px;
+    top: 85px;
+    left: 1000px;
+    font-size: 24pt;
+    color: white;
+    background-color: orange;
+    border-radius: 25%;
+}
+
+#Column-1 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px;
+  left: 705px; 
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-2 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px;
+  left: 770px; 
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-3 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px;
+  left: 835px; 
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-4 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px;
+  left: 900px; 
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-5 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px; 
+  left: 965px;
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-6 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px; 
+  left: 1030px;
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-7 {
+  position: fixed;
+  margin: 5px;
+  bottom: 185px;
+  left: 1095px; 
+  width: 50px;
+  height: 50px;
+  font-size: 24pt;
+  color: white;
+  background-color: gray;
+  border-radius: 25%;
+}
+
+#Column-1:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-2:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-3:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-4:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-5:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-6:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+#Column-7:hover {
+  scale: 120%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+
+/*
+Modal Stuff
+*/
+
+#modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#Join-Game-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1010;
+  overflow: scroll;
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.modal-header {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+#modal-close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 20px 10px;
+}
+.hidden {
+  display: none;
+}
+#modal-cancel,
+#modal-accept {
+  margin-right: 20px;
+}
+
+#modal-cancel {
+  color: #333;
+  background-color: #fff;
+}
+
+#modal-cancel:hover {
+  background-color: #eee;
+}
+
+#Join-Room-Button:hover,
+#Join-Room-Button:focus {
+  scale: 110%;
+}
+
+#New-Game-Button:hover,
+#New-Game-Button:focus {
+  scale: 110%;
+}
