@@ -62,11 +62,14 @@ h1 {
     background-color: yellow;
   }
 
+.buttons {
+  display: flex;
+  justify-content: space-around; /* or space-between */
+  gap: -200px; 
+}
+
 #New-Game-Button {
-  position: fixed;
-  margin: 5px;
-  top: 85px;
-  left: 500px; 
+  margin: 25px;
   width: 250px;
   height: 100px;
   font-size: 24pt;
@@ -76,12 +79,9 @@ h1 {
 }
 
 #Join-Room-Button {
-    position: fixed;
-    margin: 5px; 
+    margin: 25px; 
     width: 250px;
     height: 100px;
-    top: 85px;
-    left: 1000px;
     font-size: 24pt;
     color: white;
     background-color: orange;

@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Connect 4</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="index.js"></script>
+    <meta charset="UTF-8">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
 </head>
 <body>
     <h1>Connect 4 - Homepage</h1>
-    <button type="button" id="New-Game-Button"><i class="fas fa-plus"></i>New Game</button>
-    <button type="button" id="Join-Room-Button"><i class="fas fa-plus"></i>Join a Room</button>
+    <div class="buttons">
+        <button type="button" id="New-Game-Button"><i class="fas fa-plus"></i>New Game</button>
+        <button type="button" id="Join-Room-Button"><i class="fas fa-plus"></i>Join a Room</button>
+    </div>
 
     <div id="modal-backdrop" class="hidden"></div>
     <div id="Join-Game-modal" class="hidden">
-      <div class="modal-dialog">
-        <div class="modal-header">
-          <h3>Enter a Join Code</h3>
-          <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Enter a Join Code</h3>
+                <button type="button" id="modal-close" class="modal-hide-button">&times;</button>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
-        <button type="button" id="modal-accept" class="action-button">Join Game</button>
-    </div>
+        <div class="modal-footer">
+            <button type="button" id="modal-cancel" class="modal-hide-button action-button">Cancel</button>
+            <button type="button" id="modal-accept" class="action-button">Join Game</button>
+        </div>
 
-    <div class="modal-body">
-        <div class="Join-Game-number">
-            <label for="text-input">Enter Game Number</label>
-            <input type="text" id="text-input"></input>
+        <div class="modal-body">
+            <div class="Join-Game-number">
+                <label for="text-input">Enter Game Number</label>
+                <input type="text" id="text-input"></input>
+            </div>
         </div>
-    </div>
 </body>
+</html>
