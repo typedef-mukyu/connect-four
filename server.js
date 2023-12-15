@@ -1,16 +1,40 @@
 var path = require("path");
 var express = require("express");
+var process = require("node:process");
+var fs = require("node:fs");
 
 var app = express();
 var port = process.env.PORT || 3000; // default port
 var gameStates = require("./gameStates.json");
 
-var exphbs = require("express-handlebars")
+var exphbs = require("express-handlebars");
+
 
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set('views', './views');
+process.on("exit", () =>{
+    console.log("Saving open games...")
+    cleanUpGames();
+    fs.writeFileSync("gameStates.json", JSON.stringify(gameStates));
+})
+function autoSaveLoop(){
+    cleanUpGames();
+    fs.writeFile("gameStates.json", JSON.stringify(gameStates), () => {
+        setTimeout(autoSaveLoop, 60000);
+    })
+}
 
+// Cleans up completed games or those abandoned for over two weeks.
+function cleanUpGames(){
+    for(var g = 0; g < gameStates.length; g++){
+        if(gameStates.values()[g].winner !== null ||
+           Date.now() - gameStates.values()[g].lastInteraction > 1209600000){
+            delete gameStates[gamestates.keys()[g]]
+            g--;
+        }
+    }
+}
 
 function cellPlayerToClass(player){
     var outclass = "token";
@@ -249,4 +273,5 @@ app.get('*', function (req, res) {
 
 app.listen(port, function () {
     console.log("== Server is listening on port", port);
+
 })

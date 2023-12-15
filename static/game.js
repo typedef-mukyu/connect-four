@@ -2,7 +2,9 @@ var playerID;
 var currentState;
 var timeOutDelay = 1000;
 var timeOutAttempts = 0;
+var textField;
 function waitForMove(){
+    textField.innerText = "Waiting for your opponent...";
     setTimeout(() => {
         getState();
         if(currentState.currentTurn !== playerID){
@@ -11,7 +13,6 @@ function waitForMove(){
                 timeOutAttempts = 0;
             }
             else timeOutAttempts++;
-            //waitForMove();
         }
         else{
             timeOutDelay = 1000;
@@ -27,8 +28,8 @@ function getState(force = 0){
             console.log(200);
             currentState = xhr.response;
             updateBoard();
-            checkWin();
             if(currentState.currentTurn !== playerID) waitForMove();
+            else if (!checkWin()) textField.innerText = "It is your turn.";
         }
     }
     xhr.open("GET", "state?force=" + String(force), true);
@@ -42,8 +43,10 @@ function dropChip(x){
         if (this.readyState == 4 && this.status == 200){
             currentState = xhr.response;
             updateBoard();
-            checkWin();
-            waitForMove();
+            if(!checkWin()) waitForMove();
+        }
+        else if (this.readyState == 4 && this.status == 400){
+            textField.innerText = "That is not a valid move. Try again.";
         }
     }
     xhr.open("POST", "move/" + String(x), true);
@@ -51,10 +54,13 @@ function dropChip(x){
 }
 function checkWin(){
     if(currentState.winner !== null){
-        if(currentState.winner === playerID) alert("You win!");
-        else alert("You lose.");
-        window.location.href = "/";
+        if(currentState.winner === playerID){
+            textField.innerText = "You win!";
+        }
+        else textField.innerText = "You lose.";
+        return 1;
     }
+    return 0;
 }
 function updateBoard(){
     var grid = document.querySelector(".board")
@@ -76,6 +82,7 @@ window.addEventListener('DOMContentLoaded', function () {
             dropChip(Number(this.dataset.col));
         })
     }
+    textField = document.querySelector(".connect4 p");
     getState(1);
     
         
