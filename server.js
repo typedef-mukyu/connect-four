@@ -197,7 +197,7 @@ function newState(){
     state.id = randomUniqueGameCode();
     state.currentTurn = 0;
     state.winner = null;
-    state.lastInteraction = Date.now(); // flag for 
+    state.lastInteraction = Date.now(); // flag for cleaning up old games
     state.grid = Array(7);
     for(var i = 0; i < 7; i++) state.grid[i] = Array(6).fill(null);
     gameStates[state.id] = state;
@@ -239,7 +239,7 @@ app.post("/games/:n/player/:p/move/:x", function(req, res, next){
     var n = Number(req.params.n);
     var p = Number(req.params.p);
     var x = Number(req.params.x);
-    if(n === NaN || gameStates[n] === undefined) next();
+    if(gameStates[n] === undefined) next();
     else if(gameStates[n].winner !== null) res.status(410).end();
     else if(gameStates[n].currentTurn !== p) res.status(429).end();
     else if(x < 0 || x > 6 || p < 0 || p > 1) res.status(400).end();
@@ -253,7 +253,7 @@ app.post("/games/:n/player/:p/move/:x", function(req, res, next){
 app.get("/games/:n/player/:p/state", function(req, res, next){
     var n = Number(req.params.n);
     var p = Number(req.params.p);
-    if(n === NaN || gameStates[n] === undefined) next();
+    if(gameStates[n] === undefined) next();
     else if(p < 0 || p > 1){
         res.status(400).end();     
     }
